@@ -68,21 +68,55 @@ content {
 #personal-statement p {
     background-color: rgb(175,238,238,.4);
     position: absolute;
-    height: 70%;
+    height: 93%;
     margin: 0;
-    padding: 15vh 2vw 0vh 2vw;
+    padding: 5vh 2vw 0vh 2vw;
     display: block;
     text-align: justify;
     overflow: hidden;
-    font-size: calc(0.5rem + 4vmin);
+    font-size: calc(0.5rem + 3vmin);
 }
 
 #personal-statement p strong {
-    font-size: 6vmin;
+    font-size: calc(0.5rem + 4vmin);
 }
 
 #fishVid {
     position: absolute;
+}
+
+#skill-stories {
+    position: relative;
+    height: 100%;
+}
+
+/*#ss-headers {
+    ??how to keep this from scrolling?? Then, build modal
+}*/
+
+#skillscroll {
+    display: grid;
+    grid-gap: 1vmin;
+    grid-template-columns: repeat(6, calc(50% - 40px));
+    grid-template-rows: minmax(150px, 1fr);
+    margin: 5vh 1vh 5vh 1vh;
+    padding-left: 1vh;
+}
+
+#skillscroll li {
+    list-style: none;
+    height: 70vmin;
+    line-height: 70vmin;
+    width: auto;
+    font-size: calc(0.5rem + 2vmin);;
+    text-align: center;
+    vertical-align: middle;
+    margin: 5vh 1vh 1vh 5vh;
+    margin-left: 0;
+    background-image: url("./assets/coral_background2000px.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 70%;
 }
 
 footer {

@@ -66,7 +66,7 @@ content {
 }
 
 #personal-statement p {
-    background-color: rgb(175,238,238,.4);
+    background-color: rgba(175,238,238,.4);
     position: absolute;
     height: 93%;
     margin: 0;
@@ -88,35 +88,112 @@ content {
 #skill-stories {
     position: relative;
     height: 100%;
+    top: 10vmin;
 }
 
-/*#ss-headers {
-    ??how to keep this from scrolling?? Then, build modal
-}*/
+#ss-headers {
+    width: 100vw;
+    top: 0;
+    text-align: center;
+}
 
 #skillscroll {
     display: grid;
     grid-gap: 1vmin;
-    grid-template-columns: repeat(6, calc(50% - 40px));
-    grid-template-rows: minmax(150px, 1fr);
-    margin: 5vh 1vh 5vh 1vh;
-    padding-left: 1vh;
+    grid-template-columns: repeat(10, calc(50% - 20vmin));
+    grid-template-rows: minmax(100%, 1fr);
+    margin: 1vmin;
 }
 
 #skillscroll li {
     list-style: none;
-    height: 70vmin;
-    line-height: 70vmin;
-    width: auto;
-    font-size: calc(0.5rem + 2vmin);;
-    text-align: center;
-    vertical-align: middle;
-    margin: 5vh 1vh 1vh 5vh;
-    margin-left: 0;
+    height: 50vmin;
+    width: 50vmin;
+    margin: 1vmin;
     background-image: url("./assets/coral_background2000px.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     border-radius: 70%;
+    line-height: 50vmin;
+    text-align: center;
+}
+
+#skillscroll li button {
+    border: none;
+    background-color: rgba(5,26,106,.4);
+    color: white;
+    font-size: calc(0.5rem + 2vmin);
+    font-weight: bold;
+    padding: 3vmin;
+    border-radius: 10%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    margin-left: -50vmin;
+    margin-top: -35vmin;
+    z-index: 5;
+    height: 70vmin;
+    width: 100vmin;
+    border-radius: 50%;
+    overflow: auto;
+    background-color: rgba(255,255,255,.6);
+}
+
+.modal-content {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    margin-left: -45vmin;
+    margin-top: -32.5vmin;
+    margin-right: 2vmin;
+    height: 65vmin;
+    width: 90vmin;
+    border-radius: 50%;
+    overflow: auto;
+    background-color: rgb(5,26,106);
+    text-align: center;
+   
+    display: grid;
+    grid-gap: .1vmin;
+    grid-template-rows: 15vmin 40vmin 5vmin;
+    grid-template-columns: 1fr;
+    grid-template-areas: "headline"
+                         "story"
+                         "close";
+}
+
+headline {
+    grid-area: headline;
+    text-align: center;
+    font: 3vmin;
+    line-height: 10vmin;
+    padding-top: 5vmin;
+}
+
+story {
+    grid-area: story;
+    text-align: center;
+    font: 2vmin;
+    padding-top: 5vmin;
+}
+
+close {
+    grid-area: close;
+    text-align: center;
+    font-size: calc(0.5rem + 2vmin);
+    font-weight: bold;
+    color: white;
+}
+
+.close:hover,
+.close:focus {
+    color: pink;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 footer {

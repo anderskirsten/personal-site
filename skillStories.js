@@ -77,8 +77,9 @@ const skillScroll = document.getElementById("skillscroll");
 const buildLi = function(skillScroll, story) {
     let li = document.createElement("li");
     li.setAttribute("id", story.ssID);
-    //console.log(li.id + " has been created.");   
-    li.textContent = story.thumbTitle;
+    //console.log(li.id + " has been created.");
+    li.innerHTML = "<button id='" + story.ssID + "' onClick='modalOpen(this.id)'>" + story.thumbTitle + " </button>";
+    //li.textContent = story.thumbTitle;
     skillScroll.appendChild(li);
 }
 

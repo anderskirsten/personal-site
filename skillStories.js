@@ -70,19 +70,21 @@ const skillStories = {
     }
 }
 
-//grid container experiment
 const skillScroll = document.getElementById("skillscroll");
-//console.log(skillScroll);
+const modal = document.getElementById("storyModal");
+const storyHeadline = document.getElementById("storyHeader");
+const storyContent = document.getElementById("storyContent");
+const closeBtn = document.getElementById("closeBtn");
 
+//builds individual story bubble
 const buildLi = function(skillScroll, story) {
     let li = document.createElement("li");
     li.setAttribute("id", story.ssID);
-    //console.log(li.id + " has been created.");
     li.innerHTML = "<button id='" + story.ssID + "' onClick='modalOpen(this.id)'>" + story.thumbTitle + " </button>";
-    //li.textContent = story.thumbTitle;
     skillScroll.appendChild(li);
 }
 
+//builds ul of story bubbles be iterating through skillStories object
 const buildSkills = function(skillStories) {
     let i;
     for (i in skillStories) {
@@ -92,3 +94,43 @@ const buildSkills = function(skillStories) {
 }
 
 buildSkills(skillStories);
+
+
+//Modal functions below
+
+//set modal content if id matches clicked story bubble
+const buildModal = function(skillStories, id) {
+    let i;
+    for (i in skillStories) {
+        let story = skillStories[i];
+        if (story.ssID == id) {
+            storyHeadline.innerHTML = story.headline;
+            storyContent.innerHTML = story.storyContent; 
+        }
+    }
+}
+
+//set modal content and make visible
+const modalOpen = function(id) {
+    console.log("Story ID " + id + " has been selected.");
+    buildModal(skillStories, id);
+    modal.style.display = "block";
+}
+
+//close modal
+closeBtn.onclick = function() {
+    console.log("close button has been clicked")
+    modal.style.display = "none";
+}
+
+/* Need to figure out how to prevent window.onclick happening when open modal button is clicked TBC...
+window.onclick = function(event) {
+    if (modal.style.display != "none") {
+    console.log("window has been clicked");
+    modal.style.display = "none";
+    console.log("Modal display is " + modal.style.display);
+    }
+}
+*/
+
+//next step: Add <p> tags to story content, then fix story bubble layout to eliminate overlap at all screen sizes **bugs to work on 1. get ss-headers to stick as page scrolls horizontally 2. enable out of modal click to close

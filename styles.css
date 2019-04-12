@@ -19,7 +19,7 @@ container {
     margin: auto;
     display: grid;
     grid-gap: .1vw;
-    grid-template-rows: 20vh auto 10vh;
+    grid-template-rows: 20vh auto 15vh;
     grid-template-columns: 1fr;
     grid-template-areas: "header"
                          "content"
@@ -66,15 +66,15 @@ content {
 }
 
 #personal-statement p {
-    background-color: rgba(175,238,238,.4);
     position: absolute;
-    height: 93%;
+    height: 80%;
     margin: 0;
-    padding: 5vh 2vw 0vh 2vw;
+    padding: 5vh 5vw 0vh 5vw;
     display: block;
     text-align: justify;
     overflow: hidden;
     font-size: calc(0.5rem + 3vmin);
+    text-shadow: .25rem .25rem rgb(5,26,106);
 }
 
 #personal-statement p strong {
@@ -83,42 +83,44 @@ content {
 
 #fishVid {
     position: absolute;
+    height: 88%;
 }
 
 #skill-stories {
-    position: relative;
-    height: 100%;
-    top: 10vmin;
+    height: 80%;    
 }
 
 #ss-headers {
     width: 100vw;
-    top: 0;
+    top: 5%;
     text-align: center;
+    margin-bottom: 2%;
 }
 
 #skillscroll {
-    display: grid;
-    grid-gap: 1vmin;
-    grid-template-columns: repeat(10, calc(50% - 20vmin));
-    grid-template-rows: minmax(100%, 1fr);
-    margin: 1vmin;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    li {
+        flex: 0 0 auto;
+    }
 }
 
 #skillscroll li {
     list-style: none;
-    height: 50vmin;
-    width: 50vmin;
+    height: 40vmin;
     margin: 1vmin;
     background-image: url("./assets/coral_background2000px.jpg");
     background-position: center center;
     background-repeat: no-repeat;
-    border-radius: 70%;
-    line-height: 50vmin;
+    border-radius: 50%;
+    line-height: 40vmin;
     text-align: center;
 }
 
 #skillscroll li button {
+    width: 40vmin;
     border: none;
     background-color: rgba(5,26,106,.4);
     color: white;
@@ -169,23 +171,24 @@ content {
 headline {
     grid-area: headline;
     position: absolute;
-    width: 50%;
+    width: 60%;
     height: 80%;
     left: 50%;
-    margin-left: -25%;
-    top: 40%;
+    margin-left: -30%;
+    padding-bottom: 2vmin;
+    top: 45%;
     text-align: center;
-    font: 3vmin;
+    font-size: calc(0.5rem + 2vmin);
 }
 
 story {
     grid-area: story;
     text-align: justify;
-    font: 2vmin;
+    font-size: calc(0.5rem + 1.5vmin);
     position: absolute;
     width: 80%;
-    height: 80%;
-    top: 10%;
+    height: 60%;
+    top: 25%;
     left: 50%;
     margin-left: -40%;
     overflow: auto;

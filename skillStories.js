@@ -76,26 +76,49 @@ const storyHeadline = document.getElementById("storyHeader");
 const storyContent = document.getElementById("storyContent");
 const closeBtn = document.getElementById("closeBtn");
 
+//convert nested skillStories object to array and randomize
+const shuffleStories = function(skillStories) {
+    //convert object to array with only id and thumbtitle for each story object
+    let i, storyObj;
+    let storyArray = [];
+    for (i in skillStories) {
+        let story = skillStories[i];
+        storyObj = {id: story.ssID, thumbTitle: story.thumbTitle}
+        storyArray.push(storyObj);
+    }
+    //now randomize the index
+    let currentIndex = storyArray.length
+    let tempValue, randomIndex;
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor((Math.random() * currentIndex));
+        currentIndex -= 1;
+        
+        tempValue = storyArray[currentIndex];
+        storyArray[currentIndex] = storyArray[randomIndex];
+		storyArray[randomIndex] = tempValue;
+    }
+    return storyArray;
+}
+
 //builds individual story bubble
 const buildLi = function(skillScroll, story) {
     let li = document.createElement("li");
-    li.setAttribute("id", story.ssID);
-    li.innerHTML = "<button id='" + story.ssID + "' onClick='modalOpen(this.id)'>" + story.thumbTitle + " </button>";
+    li.setAttribute("id", story.id);
+    li.innerHTML = "<button id='" + story.id + "' onClick='modalOpen(this.id)'>" + story.thumbTitle + " </button>";
     skillScroll.appendChild(li);
 }
 
 //builds ul of story bubbles by iterating through skillStories object
 const buildSkills = function(skillStories) {
+    let storyArray = shuffleStories(skillStories);
     let i;
-    for (i in skillStories) {
-        let story = skillStories[i];
+    for (i in storyArray) {
+        let story = storyArray[i];
         buildLi(skillScroll, story)
-        console.log("buildSkills function is active");
     }
 }
 
 buildSkills(skillStories);
-
 
 //Modal functions below
 
@@ -113,25 +136,13 @@ const buildModal = function(skillStories, id) {
 
 //set modal content and make visible
 const modalOpen = function(id) {
-    console.log("Story ID " + id + " has been selected.");
     buildModal(skillStories, id);
     modal.style.display = "block";
 }
 
 //close modal
 closeBtn.onclick = function() {
-    console.log("close button has been clicked")
     modal.style.display = "none";
 }
 
-/* Need to figure out how to prevent window.onclick happening when open modal button is clicked TBC...
-window.onclick = function(event) {
-    if (modal.style.display != "none") {
-    console.log("window has been clicked");
-    modal.style.display = "none";
-    console.log("Modal display is " + modal.style.display);
-    }
-}
-*/
-
-//next step: Enable out of modal click to close, then fix images(coral?) and add media queries(660) as needed 
+//next step: fix images(coral?) and add media queries(660) as needed 

@@ -104,7 +104,7 @@ const shuffleStories = function(skillStories) {
 const buildLi = function(skillScroll, story) {
     let li = document.createElement("li");
     li.setAttribute("id", story.id);
-    li.innerHTML = "<button id='" + story.id + "' onClick='modalOpen(this.id)'>" + story.thumbTitle + " </button>";
+    li.innerHTML = "<button id='" + story.id + "' class='btn' onClick='modalOpen(this.id)'>" + story.thumbTitle + " </button>";
     skillScroll.appendChild(li);
 }
 
@@ -145,4 +145,4 @@ closeBtn.onclick = function() {
     modal.style.display = "none";
 }
 
-//next step: fix images(coral?) and add media queries(660) as needed 
+//next step: fix images(coral?)

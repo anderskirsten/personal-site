@@ -2,6 +2,10 @@ html {
     height: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
     background-color: rgb(5,26,106);
     height: 100vh;
@@ -29,7 +33,6 @@ container {
 header {
     grid-area: header;
     text-align: center;
-    /*align-content: middle;*/
     font-size: 90%;
 }
 
@@ -45,7 +48,6 @@ header h2 {
 
 #headshot {
     float: right;
-    /*top: 0;*/
     border-radius: 50%;
     max-height: 90%;
     width: auto;
@@ -58,32 +60,35 @@ content {
 }
 
 #personal-statement {
-    position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     height: 100%;
     width: 100%;
-}
-
-#personal-statement p {
-    position: absolute;
-    height: 80%;
-    margin: 0;
-    padding: 5vh 5vw 0vh 5vw;
-    display: block;
-    text-align: justify;
-    overflow: hidden;
-    font-size: calc(0.5rem + 3vmin);
-    text-shadow: .25rem .25rem rgb(5,26,106);
-}
-
-#personal-statement p strong {
-    font-size: calc(0.5rem + 4vmin);
+    margin-bottom: 15%;
 }
 
 #fishVid {
-    position: absolute;
-    height: 88%;
+    height: 50vh;
+    width: auto;
+    border-radius: 80%;
+    margin-left: 3%;
+}
+
+#personal-statement p {
+    display: block;
+    text-align: justify;
+    overflow: hidden;
+    font-size: calc(0.5rem + 2vmin);
+    text-shadow: .25rem .25rem rgb(5,26,106);
+    height: 60vh;
+    width: 90%;
+    margin: 10% 2% 0 2%;
+}
+
+#personal-statement p strong {
+    font-size: calc(0.5rem + 3vmin);
 }
 
 #skill-stories {
@@ -101,13 +106,10 @@ content {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-
-    li {
-        flex: 0 0 auto;
-    }
 }
 
 #skillscroll li {
+    flex: 0 0 auto;
     list-style: none;
     height: 40vmin;
     margin: 1vmin;
@@ -128,6 +130,11 @@ content {
     font-weight: bold;
     padding: 3vmin;
     border-radius: 10%;
+    outline: 0;
+}
+
+li > button {
+    cursor: pointer;
 }
 
 .modal {
@@ -225,4 +232,30 @@ footer image {
     color: white;
     padding-top: 2vh;
     font-size: 4vmin;
+}
+
+@media only screen and (max-width: 768px) {
+    #personal-statement {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    #personal-statement p {
+        position: absolute;
+        height: 93%;
+        margin: 15% 0 5% 0;
+    }
+
+    #fishVid {
+        position: absolute;
+    }
+    
+    #ss-headers {
+        margin-bottom: 8%;
+    }
+    
+    headline {
+        font-size: 80%;
+    }
 }
